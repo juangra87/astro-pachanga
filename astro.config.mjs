@@ -7,5 +7,6 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: 'https://juangra87.github.io',
   base: '/astro-pachanga',
+  output: 'static',
   integrations: [tailwind(), vue()]
 });
