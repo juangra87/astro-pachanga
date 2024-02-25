@@ -1,3 +1,25 @@
 ---
-$END$
+import Footer from '../components/globals/Footer.astro';
+import StickyHeader from "../components/globals/StickyHeader.astro";
+import HeadBaseProps from "../components/globals/HeadBaseProps.astro";
 ---
+<html>
+    <head>
+        <HeadBaseProps/>
+    </head>
+    <body class="bg-white dark:bg-gray-800">
+        <StickyHeader/>
+        <div class="container max-w-full p-4 pt-24 lg:px-2 flex justify-center">
+            <slot/>
+            <!-- your content is injected here -->
+        </div>
+    </body>
+    <Footer/>
+</html>
+<script>
+    import 'flowbite';
+</script>
+
+<style is:global>
+    @import url('https://fonts.cdnfonts.com/css/inter');
+</style>
