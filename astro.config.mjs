@@ -1,17 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import vue from '@astrojs/vue';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from "@tailwindcss/vite";
 
-// Obtener el nombre del repositorio desde package.json o usar un valor por defecto
-const REPO_NAME = 'pachanga-frontend';
+import vue from "@astrojs/vue";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [vue(), tailwind()],
-  site: `https://perezjuangabriel.github.io`,
-  base: `/${REPO_NAME}`,
-  build: {
-    assets: 'assets'
-  }
+  vite: {
+      plugins: [tailwindcss()],
+    },
+
+  integrations: [vue()],
 });
