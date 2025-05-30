@@ -1,10 +1,12 @@
 {
   "title": "Pachanga - Organiza tus partidos",
   "addPlayers": "Añadir Jugadores",
-  "playerName": "Nombre del jugador",
+  "playerName": "Introduce un jugador por línea",
   "add": "Añadir",
   "players": "Jugadores",
   "divideTeams": "Dividir Equipos",
   "teamA": "Equipo A",
-  "teamB": "Equipo B"
+  "teamB": "Equipo B",
+  "noPlayers": "No hay jugadores añadidos",
+  "remove": "Eliminar"
 }

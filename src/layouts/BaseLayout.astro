@@ -1,14 +1,29 @@
 ---
 import "../styles/global.css";
 import Header from '../components/Header.vue';
+import i18n from "../i18n/index.ts";
+
+const t = i18n.t.bind(i18n);
+const { title = t("title") } = Astro.props;
 
 const { slots } = Astro;
 
 ---
 
-<div class="min-h-screen flex flex-col">
-  <Header />
-  <main class="flex-grow container mx-auto p-2">
-    <slot/>
-  </main>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col">
+      <Header />
+      <main class="flex-grow container mx-auto p-2">
+        <slot/>
+      </main>
+    </div>
+  </body>
+</html>

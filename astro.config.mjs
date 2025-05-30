@@ -19,5 +19,9 @@ export default defineConfig({
     routing: {
       prefixDefaultLocale: false
     }
+  },
+  output: 'static',
+  build: {
+    assets: 'astro'
   }
 });

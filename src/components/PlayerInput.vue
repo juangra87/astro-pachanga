@@ -1,12 +1,13 @@
 <template>
   <div class="flex flex-col items-center w-full">
-    <h2 class="text-2xl font-bold mb-6 text-ball-dark">Enter Players List</h2>
+    <h2 class="text-2xl font-bold mb-6 text-ball-dark">{{ t('addPlayers') }}</h2>
     
     <div class="w-full bg-ball-light rounded-xl shadow-modern p-6">
       <textarea
-        v-model="playersList"
-        placeholder="Enter players list (format: 1 - player_name)"
-        class="border-2 border-field-light focus:border-team-primary rounded-xl p-4 mb-6 w-full h-70 focus:ring-2 focus:ring-team-primary/20 transition-all"
+        v-model="playerList"
+        @input="processPlayers"
+        :placeholder="t('playerName')"
+        class="w-full min-h-[100px] p-2 border rounded"
       ></textarea>
 
       <!-- Tabla de jugadores procesados -->
@@ -76,8 +77,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, watch } from 'vue';
+<script setup lang="ts">
+import { ref, watch } from 'vue';
+import i18n from '../i18n/index.ts';
+
+const t = i18n.t.bind(i18n);
+
+// Define los eventos que el componente puede emitir
+const emit = defineEmits(['player-added', 'player-updated']);
 
 interface Player {
   name: string;
@@ -86,68 +93,63 @@ interface Player {
   extraParam?: any;
 }
 
-export default defineComponent({
-  data() {
-    return {
-      playersList: '',
-      processedPlayers: [] as Player[],
-      fitnessOptions: [
-        { value: 'very-fit', label: 'Muy en forma' },
-        { value: 'fit', label: 'En forma' },
-        { value: 'regular', label: 'Regular' },
-        { value: 'unfit', label: 'En baja forma' }
-      ]
-    };
-  },
-  created() {
-    watch(
-      () => this.playersList,
-      () => this.processPlayersList()
-    );
-  },
-  methods: {
-    processPlayersList() {
-      const lines = this.playersList.split('\n');
-      const playerPattern = /^\d+\s*-\s*(.+)$/;
-      this.processedPlayers = [];
-      
-      lines.forEach(line => {
-        const match = line.match(playerPattern);
-        if (match && match[1]) {
-          const playerName = match[1].trim();
-          if (playerName) {
-            const player: Player = {
-              name: playerName,
-              skill: 5, // valor por defecto
-              fitness: 'regular', // valor por defecto
-            };
-            this.processedPlayers.push(player);
-            this.$emit('player-added', player);
-          }
-        }
-      });
-    },
-    updatePlayer(player: Player) {
-      this.$emit('player-updated', player);
-    },
-    getSkillClass(skill: number) {
-      if (skill >= 1 && skill <= 3) return 'bg-red-500 text-white';
-      if (skill >= 4 && skill <= 6) return 'bg-orange-500 text-white';
-      if (skill >= 7 && skill <= 9) return 'bg-blue-500 text-white';
-      if (skill === 10) return 'bg-green-500 text-white';
-      return 'bg-gray-100';
-    },
-    getFitnessClass(fitness: string) {
-      switch (fitness) {
-        case 'very-fit': return 'bg-green-500 text-white';
-        case 'fit': return 'bg-blue-500 text-white';
-        case 'regular': return 'bg-orange-500 text-white';
-        case 'unfit': return 'bg-red-500 text-white';
-        default: return 'bg-gray-100';
+const playerList = ref('');
+const processedPlayers = ref([] as Player[]);
+const fitnessOptions = [
+  { value: 'very-fit', label: 'Muy en forma' },
+  { value: 'fit', label: 'En forma' },
+  { value: 'regular', label: 'Regular' },
+  { value: 'unfit', label: 'En baja forma' }
+];
+
+watch(
+  () => playerList.value,
+  () => processPlayersList()
+);
+
+const processPlayersList = () => {
+  const lines = playerList.value.split('\n');
+  const playerPattern = /^\d+\s*-\s*(.+)$/;
+  processedPlayers.value = [];
+  
+  lines.forEach(line => {
+    const match = line.match(playerPattern);
+    if (match && match[1]) {
+      const playerName = match[1].trim();
+      if (playerName) {
+        const player: Player = {
+          name: playerName,
+          skill: 5, // valor por defecto
+          fitness: 'regular', // valor por defecto
+        };
+        processedPlayers.value.push(player);
+        emit('player-added', player);
       }
-    },
-  },
-});
+    }
+  });
+};
+
+const updatePlayer = (player: Player) => {
+  emit('player-updated', player);
+};
+
+const getSkillClass = (skill: number) => {
+  if (skill >= 1 && skill <= 3) return 'bg-red-500 text-white';
+  if (skill >= 4 && skill <= 6) return 'bg-orange-500 text-white';
+  if (skill >= 7 && skill <= 9) return 'bg-blue-500 text-white';
+  if (skill === 10) return 'bg-green-500 text-white';
+  return 'bg-gray-100';
+};
+
+const getFitnessClass = (fitness: string) => {
+  switch (fitness) {
+    case 'very-fit': return 'bg-green-500 text-white';
+    case 'fit': return 'bg-blue-500 text-white';
+    case 'regular': return 'bg-orange-500 text-white';
+    case 'unfit': return 'bg-red-500 text-white';
+    default: return 'bg-gray-100';
+  }
+};
 </script>
 
 <style scoped>

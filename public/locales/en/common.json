@@ -1,10 +1,12 @@
 {
   "title": "Pachanga - Organize your matches",
   "addPlayers": "Add Players",
-  "playerName": "Player name",
+  "playerName": "Enter one player per line",
   "add": "Add",
   "players": "Players",
   "divideTeams": "Divide Teams",
   "teamA": "Team A",
-  "teamB": "Team B"
+  "teamB": "Team B",
+  "noPlayers": "No players added",
+  "remove": "Remove"
 }
