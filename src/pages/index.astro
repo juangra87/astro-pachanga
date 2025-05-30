@@ -1,11 +1,41 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PlayerInput from "../components/PlayerInput.vue";
+import TeamDisplay from "../components/TeamDisplay.vue";
+import { ref } from "vue";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const players = ref<string[]>([]);
+const teamA = ref<string[]>([]);
+const teamB = ref<string[]>([]);
+
+const addPlayer = (player: string) => {
+  if (player && !players.value.includes(player)) {
+    players.value.push(player);
+  }
+};
+
+const divideTeams = () => {
+  const shuffledPlayers = [...players.value].sort(() => Math.random() - 0.5);
+  teamA.value = shuffledPlayers.filter((_, index) => index % 2 === 0);
+  teamB.value = shuffledPlayers.filter((_, index) => index % 2 !== 0);
+};
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout>
+  <div class="grid grid-cols-3 grid-rows-4 gap-5 p-4">
+    <div class="col-span-2 row-span-3">
+      <PlayerInput @addPlayer="addPlayer" client:visible />
+    </div>
+    <div class="col-start-3">2</div>
+    <div class="col-start-3 row-start-2">3</div>
+    <div class="col-start-3 row-start-3">
+      <button
+        @click="divideTeams"
+        class="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+        >Divide Teams</button>
+    </div>
+    <div class="col-span-3 row-start-4">
+      <TeamDisplay :teamA="teamA" :teamB="teamB" client:visible />
+    </div>
+  </div>
+</BaseLayout>

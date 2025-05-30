@@ -46,3 +46,76 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+
+# Astro Football Teams
+
+This project is a static web application built using Astro, TypeScript, and Vue. It allows users to input a list of players and divides them into two teams for a football match. The application is styled using Tailwind CSS.
+
+## Features
+
+- Input player names
+- Automatically divide players into two teams
+- Responsive design with Tailwind CSS
+
+## Project Structure
+
+```
+astro-football-teams
+├── public
+│   └── favicon.ico
+├── src
+│   ├── components
+│   │   ├── PlayerInput.vue
+│   │   ├── TeamDisplay.vue
+│   │   └── Header.vue
+│   ├── layouts
+│   │   └── BaseLayout.astro
+│   ├── pages
+│   │   └── index.astro
+│   ├── styles
+│   │   └── tailwind.css
+│   └── types
+│       └── index.ts
+├── astro.config.mjs
+├── package.json
+├── tsconfig.json
+├── tailwind.config.js
+└── README.md
+```
+
+## Setup Instructions
+
+1. Clone the repository:
+   ```
+   git clone <repository-url>
+   cd astro-football-teams
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   ```
+
+3. Run the development server:
+   ```
+   npm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:3000` to view the application.
+
+## Usage
+
+- Enter player names in the input field and submit.
+- The application will randomly divide the players into two teams and display them.
+
+## Technologies Used
+
+- Astro
+- Vue
+- TypeScript
+- Tailwind CSS
+
+## License
+
+This project is licensed under the MIT License.
