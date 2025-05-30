@@ -21,11 +21,7 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
       - name: Install, build, and upload your site
-        uses: withastro/action@v2
-        with:
-          path: .
-          node-version: 18
-          package-manager: pnpm
+        uses: withastro/action@v3
 
   deploy:
     needs: build

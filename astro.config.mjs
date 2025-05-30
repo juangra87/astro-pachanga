@@ -11,4 +11,6 @@ export default defineConfig({
     },
 
   integrations: [vue()],
+  site: 'https://juangra87.github.io/',
+  base: 'astro-pachanga'
 });
