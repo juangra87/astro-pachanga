@@ -6,7 +6,7 @@
       <textarea
         v-model="playersList"
         placeholder="Enter players list (format: 1 - player_name)"
-        class="border-2 border-field-light focus:border-team-primary rounded-xl p-4 mb-6 w-full h-40 focus:ring-2 focus:ring-team-primary/20 transition-all"
+        class="border-2 border-field-light focus:border-team-primary rounded-xl p-4 mb-6 w-full h-70 focus:ring-2 focus:ring-team-primary/20 transition-all"
       ></textarea>
 
       <!-- Tabla de jugadores procesados -->
@@ -31,7 +31,7 @@
                 <select 
                   v-model="player.skill" 
                   :class="[
-                    'w-full px-3 py-2 rounded-lg transition-all font-medium appearance-none cursor-pointer',
+                    'min-w-20 w-full px-3 py-2 rounded-lg transition-all font-medium appearance-none cursor-pointer',
                     getSkillClass(player.skill)
                   ]"
                   @change="updatePlayer(player)"
@@ -50,7 +50,7 @@
                 <select 
                   v-model="player.fitness" 
                   :class="[
-                    'w-full px-3 py-2 rounded-lg transition-all font-medium appearance-none cursor-pointer',
+                    'min-w-40 w-full px-3 py-2 rounded-lg transition-all font-medium appearance-none cursor-pointer',
                     getFitnessClass(player.fitness)
                   ]"
                   @change="updatePlayer(player)"

@@ -12,5 +12,12 @@ export default defineConfig({
 
   integrations: [vue()],
   site: 'https://juangra87.github.io/',
-  base: 'astro-pachanga'
+  base: 'astro-pachanga',
+  i18n: {
+    defaultLocale: "es",
+    locales: ["es", "en"],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  }
 });

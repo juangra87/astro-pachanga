@@ -1,26 +1,76 @@
-# Astro Starter Kit: Basics
+# ⚽ Pachanga Frontend
 
-```sh
-pnpm create astro@latest -- --template basics
+Una aplicación web para organizar partidos de fútbol sala y fútbol, con un sistema inteligente de distribución de jugadores en equipos equilibrados basado en habilidades y estado físico.
+
+## 🚀 Stack Tecnológico
+
+- **[Astro](https://astro.build)** - Framework web para sitios estáticos y dinámicos
+- **[Vue 3](https://vuejs.org)** - Framework progresivo para interfaces de usuario
+- **[Tailwind CSS v4](https://tailwindcss.com)** - Framework CSS utility-first
+- **[pnpm](https://pnpm.io)** - Gestor de paquetes rápido y eficiente
+- **[GitHub Pages](https://pages.github.com)** - Hosting y despliegue automático
+
+## 🎯 Funcionalidades Principales
+
+- **Gestión de Jugadores**: 
+  - Crear y administrar perfiles de jugadores
+  - Asignar niveles de habilidad
+  - Registrar estado físico actual
+  
+- **Gestión de Partidos**:
+  - Crear partidos de fútbol sala o fútbol
+  - Seleccionar jugadores disponibles
+  
+- **Distribución Inteligente de Equipos**:
+  - Algoritmo de balanceo automático
+  - Considera nivel de habilidad de cada jugador
+  - Tiene en cuenta el estado físico actual
+  - Genera equipos equilibrados para partidos más competitivos
+
+## 🛠️ Comandos
+
+Todos los comandos se ejecutan desde la raíz del proyecto:
+
+| Comando                | Acción                                          |
+| :--------------------- | :---------------------------------------------- |
+| `pnpm install`         | Instala las dependencias                        |
+| `pnpm run dev`         | Inicia el servidor de desarrollo en `localhost:4321` |
+| `pnpm run build`       | Construye el sitio para producción en `./dist/` |
+| `pnpm run preview`     | Vista previa del build localmente               |
+
+## 📦 Instalación
+
+```bash
+# Clona el repositorio
+git clone https://github.com/tu-usuario/pachanga-frontend.git
+
+# Navega al directorio
+cd pachanga-frontend
+
+# Instala las dependencias con pnpm
+pnpm install
+
+# Inicia el servidor de desarrollo
+pnpm run dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🚀 Despliegue
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+El proyecto está configurado para desplegarse automáticamente en GitHub Pages cuando se hace push a la rama `main`.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+El workflow de GitHub Actions se encarga de:
+1. Construir el proyecto con Astro
+2. Desplegar los archivos estáticos en GitHub Pages
 
-## 🚀 Project Structure
+## 📁 Estructura del Proyecto
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
+```
 /
 ├── public/
 │   └── favicon.svg
 ├── src/
+│   ├── components/
+│   │   └── Card.astro
 │   ├── layouts/
 │   │   └── Layout.astro
 │   └── pages/
@@ -28,94 +78,16 @@ Inside of your Astro project, you'll see the following folders and files:
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🤝 Contribuir
 
-## 🧞 Commands
+Las contribuciones son bienvenidas. Por favor:
 
-All commands are run from the root of the project, from a terminal:
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios (`git commit -m 'Añade nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Abre un Pull Request
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+## 📄 Licencia
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-
-# Astro Football Teams
-
-This project is a static web application built using Astro, TypeScript, and Vue. It allows users to input a list of players and divides them into two teams for a football match. The application is styled using Tailwind CSS.
-
-## Features
-
-- Input player names
-- Automatically divide players into two teams
-- Responsive design with Tailwind CSS
-
-## Project Structure
-
-```
-astro-football-teams
-├── public
-│   └── favicon.ico
-├── src
-│   ├── components
-│   │   ├── PlayerInput.vue
-│   │   ├── TeamDisplay.vue
-│   │   └── Header.vue
-│   ├── layouts
-│   │   └── BaseLayout.astro
-│   ├── pages
-│   │   └── index.astro
-│   ├── styles
-│   │   └── tailwind.css
-│   └── types
-│       └── index.ts
-├── astro.config.mjs
-├── package.json
-├── tsconfig.json
-├── tailwind.config.js
-└── README.md
-```
-
-## Setup Instructions
-
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   cd astro-football-teams
-   ```
-
-2. Install dependencies:
-   ```
-   npm install
-   ```
-
-3. Run the development server:
-   ```
-   npm run dev
-   ```
-
-4. Open your browser and navigate to `http://localhost:3000` to view the application.
-
-## Usage
-
-- Enter player names in the input field and submit.
-- The application will randomly divide the players into two teams and display them.
-
-## Technologies Used
-
-- Astro
-- Vue
-- TypeScript
-- Tailwind CSS
-
-## License
-
-This project is licensed under the MIT License.
+Este proyecto está bajo la licencia MIT.
